@@ -57,6 +57,7 @@ import {
 } from "@phoenix/components/experiment";
 import {
   CellTop,
+  DynamicContentCell,
   JSONCell,
   LargeTextWrap,
   PaddedCell,
@@ -365,7 +366,7 @@ function ExampleOutputContent({
         ) : null}
         {content != null ? (
           <View padding="size-200" key="content-wrap">
-            <LargeTextWrap key="content">{content}</LargeTextWrap>
+            <DynamicContentCell value={content} maxHeight={200} />
           </View>
         ) : null}
         {toolCalls != null ? (
