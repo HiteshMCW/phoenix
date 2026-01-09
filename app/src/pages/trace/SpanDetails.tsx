@@ -1159,8 +1159,9 @@ function ToolSpanInfo(props: { span: Span; spanAttributes: AttributeObject }) {
   const { input, output } = span;
   const hasInput = typeof input?.value === "string";
   const hasOutput = typeof output?.value === "string";
-  const inputIsText = input?.mimeType === "text";
-  const outputIsText = output?.mimeType === "text";
+  // Show mode selector for both text and json mimeTypes
+  const showInputModeSelector = input?.mimeType === "text" || input?.mimeType === "json";
+  const showOutputModeSelector = output?.mimeType === "text" || output?.mimeType === "json";
   const toolAttributes = useMemo<AttributeTool>(
     () => spanAttributes[SemanticAttributePrefixes.tool] || {},
     [spanAttributes]
@@ -1181,7 +1182,7 @@ function ToolSpanInfo(props: { span: Span; spanAttributes: AttributeObject }) {
             {...defaultCardProps}
             extra={
               <Flex direction="row" gap="size-100" alignItems="center">
-                {inputIsText ? <ConnectedMarkdownModeSelect /> : null}
+                {showInputModeSelector ? <ConnectedMarkdownModeSelect /> : null}
                 <CopyToClipboardButton text={input.value} />
               </Flex>
             }
@@ -1199,7 +1200,7 @@ function ToolSpanInfo(props: { span: Span; spanAttributes: AttributeObject }) {
             borderColor="green-700"
             extra={
               <Flex direction="row" gap="size-100" alignItems="center">
-                {outputIsText ? <ConnectedMarkdownModeSelect /> : null}
+                {showOutputModeSelector ? <ConnectedMarkdownModeSelect /> : null}
                 <CopyToClipboardButton text={output.value} />
               </Flex>
             }
@@ -1767,8 +1768,9 @@ function MessageContentListItem({
 function SpanIO({ span }: { span: Span }) {
   const { input, output } = span;
   const isMissingIO = input == null && output == null;
-  const inputIsText = input?.mimeType === "text";
-  const outputIsText = output?.mimeType === "text";
+  // Show mode selector for both text and json mimeTypes
+  const showInputModeSelector = input?.mimeType === "text" || input?.mimeType === "json";
+  const showOutputModeSelector = output?.mimeType === "text" || output?.mimeType === "json";
   return (
     <Flex direction="column" gap="size-200">
       {input && input.value != null ? (
@@ -1778,7 +1780,7 @@ function SpanIO({ span }: { span: Span }) {
             {...defaultCardProps}
             extra={
               <Flex direction="row" gap="size-100" alignItems="center">
-                {inputIsText ? <ConnectedMarkdownModeSelect /> : null}
+                {showInputModeSelector ? <ConnectedMarkdownModeSelect /> : null}
                 <CopyToClipboardButton text={input.value} />
               </Flex>
             }
@@ -1796,7 +1798,7 @@ function SpanIO({ span }: { span: Span }) {
             borderColor="green-700"
             extra={
               <Flex direction="row" gap="size-100" alignItems="center">
-                {outputIsText ? <ConnectedMarkdownModeSelect /> : null}
+                {showOutputModeSelector ? <ConnectedMarkdownModeSelect /> : null}
                 <CopyToClipboardButton text={output.value} />
               </Flex>
             }
@@ -1925,7 +1927,8 @@ function CodeBlock({ value, mimeType }: { value: string; mimeType: MimeType }) {
   let content;
   switch (mimeType) {
     case "json":
-      content = <JSONBlock>{value}</JSONBlock>;
+      // Use ConnectedMarkdownBlock so users can switch between raw JSON and key-value block view
+      content = <ConnectedMarkdownBlock>{value}</ConnectedMarkdownBlock>;
       break;
     case "text":
       content = <ConnectedMarkdownBlock>{value}</ConnectedMarkdownBlock>;

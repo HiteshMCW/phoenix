@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 
 import { PrettyText } from "../utility";
 
+import { JSONKeyValueBlock } from "./JSONKeyValueBlock";
 import { useMarkdownMode } from "./MarkdownDisplayContext";
 import { markdownCSS } from "./styles";
 import { MarkdownDisplayMode } from "./types";
@@ -26,15 +27,21 @@ export function MarkdownBlock({
           margin: var(--ac-global-dimension-static-size-200);
         `;
 
-  return mode === "markdown" ? (
-    <div css={markdownCSS}>
-      <Markdown remarkPlugins={[remarkGfm]} css={spacingCSS}>
-        {children}
-      </Markdown>
-    </div>
-  ) : (
-    <PrettyText preCSS={spacingCSS}>{children}</PrettyText>
-  );
+  if (mode === "markdown") {
+    return (
+      <div css={markdownCSS}>
+        <Markdown remarkPlugins={[remarkGfm]} css={spacingCSS}>
+          {children}
+        </Markdown>
+      </div>
+    );
+  }
+
+  if (mode === "json") {
+    return <JSONKeyValueBlock>{children}</JSONKeyValueBlock>;
+  }
+
+  return <PrettyText preCSS={spacingCSS}>{children}</PrettyText>;
 }
 
 export function ConnectedMarkdownBlock({

@@ -7,7 +7,7 @@ import { getSupportedTimezones } from "@phoenix/utils/timeUtils";
 
 import { ModelConfig } from "./playground";
 
-export type MarkdownDisplayMode = "text" | "markdown";
+export type MarkdownDisplayMode = "text" | "markdown" | "json";
 
 export type ModelConfigByProvider = Partial<
   Record<ModelProvider, Omit<ModelConfig, "supportedInvocationParameters">>
