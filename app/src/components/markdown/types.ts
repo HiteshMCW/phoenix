@@ -1,1 +1,1 @@
-export type MarkdownDisplayMode = "text" | "markdown";
+export type MarkdownDisplayMode = "text" | "markdown" | "json";

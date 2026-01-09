@@ -13,7 +13,11 @@ import {
 import { useMarkdownMode } from "./MarkdownDisplayContext";
 import { MarkdownDisplayMode } from "./types";
 
-const markdownDisplayModes: MarkdownDisplayMode[] = ["text", "markdown"];
+const markdownDisplayModes: MarkdownDisplayMode[] = [
+  "text",
+  "markdown",
+  "json",
+];
 
 /**
  * TypeGuard for the markdown mode
@@ -62,6 +66,9 @@ export function MarkdownModeSelect({
           </SelectItem>
           <SelectItem key="markdown" id="markdown">
             Markdown
+          </SelectItem>
+          <SelectItem key="json" id="json">
+            JSON
           </SelectItem>
         </ListBox>
       </Popover>

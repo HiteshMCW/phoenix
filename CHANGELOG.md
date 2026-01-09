@@ -1,5 +1,25 @@
 # Changelog
 
+## [12.29.0](https://github.com/Arize-ai/phoenix/compare/arize-phoenix-v12.28.1...arize-phoenix-v12.29.0) (2026-01-08)
+
+
+### Features
+
+* correctness evaluator ([#10829](https://github.com/Arize-ai/phoenix/issues/10829)) ([da13ad5](https://github.com/Arize-ai/phoenix/commit/da13ad54784bfbdcd133a0c18e5f99e80a2b6482))
+
+
+### Bug Fixes
+
+* **cost:** update built-in model token prices ([#10784](https://github.com/Arize-ai/phoenix/issues/10784)) ([8ba35d2](https://github.com/Arize-ai/phoenix/commit/8ba35d25c0a039dfadf3df2a15a3d53b382a0aef))
+* **deps:** update arize-phoenix-client to 1.27.2 ([#10863](https://github.com/Arize-ai/phoenix/issues/10863)) ([73b6e7b](https://github.com/Arize-ai/phoenix/commit/73b6e7b8eca6341bfc1968906f5e89abdd338189))
+* make the delete experiment a modal ([#10838](https://github.com/Arize-ai/phoenix/issues/10838)) ([9df8e47](https://github.com/Arize-ai/phoenix/commit/9df8e478f1193eda00130d5d4eb683f8b52ed020))
+
+
+### Documentation
+
+* document tenancy ([#10856](https://github.com/Arize-ai/phoenix/issues/10856)) ([17f6ba9](https://github.com/Arize-ai/phoenix/commit/17f6ba9605d647a78bbf2c875edd08a785c69d43))
+* new python quickstarts  ([#10821](https://github.com/Arize-ai/phoenix/issues/10821)) ([f907b15](https://github.com/Arize-ai/phoenix/commit/f907b15f1dcc68bc872edb10a36081559c58577c))
+
 ## [12.28.1](https://github.com/Arize-ai/phoenix/compare/arize-phoenix-v12.28.0...arize-phoenix-v12.28.1) (2026-01-07)
 
 
